@@ -13,6 +13,7 @@ class StudentController extends Controller
         $students = Student::all();
         // print_r(json_encode($students));
         // die();
+        echo 'asdasd';
         return view('Student', compact('students'));
     }
 
