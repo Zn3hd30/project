@@ -20,4 +20,5 @@ Route::get('/', function () {
 
 
 Route::get('/student', [StudentController::class, 'show']);
-Route::get('/student/store', [StudentController::class, 'store']);
+Route::post('/student/store', [StudentController::class, 'store'])->name('StudentSave');
+Route::get('/student/data', [StudentController::class, 'data']);

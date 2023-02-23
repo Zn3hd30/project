@@ -7,32 +7,43 @@ use App\Models\Student;
 
 class StudentController extends Controller
 {
-    //
     public function show()
     {
-        $students = Student::all();
-        // print_r(json_encode($students));
-        // die();
-        echo 'asdasd';
-        return view('Student', compact('students'));
+        return view('Student');
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $students =    [
-            'FirstName' => 'joefel',
-            'LastName' => 'flores',
-            'MiddleName' => 'jamindang',
-            'Email' => 'jflores@ssct.edu.ph',
-            'Gender' => 'Male',
-            'Mobile' => '1',
-            'Address' => 'san juan',
+            'FirstName' => $request->FirstName,
+            'LastName' => $request->LastName,
+            'MiddleName' => $request->MiddleName,
+            'Gender' => $request->Gender,
         ];
-        $update = Student::where('StudentID','=','3')->update($students);
-        if($update){
-            echo 'success';
-        } else {
-            echo 'error';
+        if(empty($request->FirstName)){
+            return view('Student')->with('Error', 'FirstName is required.');
         }
+        if(empty($request->LastName)){
+            return view('Student')->with('Error', 'LastName is required.');
+        }
+        $Filter = Student::where('FirstName',$request->FirstName)
+        ->where('LastName',$request->LastName)
+        ->where('MiddleName',$request->MiddleName)
+        ->where('Gender',$request->Gender)->first();
+        if($Filter){
+            return view('Student')->with('Error', 'Student info already exist.');
+        } else {
+            $save = Student::insert($students);
+            if($save){
+                return view('Student')->with('Success', 'Successfully save');
+            } else {
+                return view('Student')->with('Error', 'Invalid');
+            }
+        }
+    }
+
+    public function data(){
+        $data = Student::all();
+        return view('StudentData',compact('data'));
     }
 }
