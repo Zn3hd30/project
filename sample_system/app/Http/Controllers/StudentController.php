@@ -12,32 +12,42 @@ class StudentController extends Controller
         return view('Student');
     }
 
+
+    public function add_student()
+    {
+        return view('add_student');
+    }
+
+
     public function store(Request $request)
     {
         $students =    [
             'FirstName' => $request->FirstName,
             'LastName' => $request->LastName,
             'MiddleName' => $request->MiddleName,
+            'ExtensionName' => $request->ExtensionName,
+            'BirthDate' => $request->BirthDate,
             'Gender' => $request->Gender,
         ];
+
         if(empty($request->FirstName)){
-            return view('Student')->with('Error', 'FirstName is required.');
-        }
+            return view('add_student')->with('Error', 'FirstName is required.');
+        } 
         if(empty($request->LastName)){
-            return view('Student')->with('Error', 'LastName is required.');
+            return view('add_student')->with('Error', 'LastName is required.');
         }
         $Filter = Student::where('FirstName',$request->FirstName)
         ->where('LastName',$request->LastName)
         ->where('MiddleName',$request->MiddleName)
         ->where('Gender',$request->Gender)->first();
         if($Filter){
-            return view('Student')->with('Error', 'Student info already exist.');
+            return view('add_student')->with('Error', 'Student info already exist.');
         } else {
             $save = Student::insert($students);
             if($save){
-                return view('Student')->with('Success', 'Successfully save');
+                return view('add_student')->with('Success', 'Successfully save');
             } else {
-                return view('Student')->with('Error', 'Invalid');
+                return view('add_student')->with('Error', 'Invalid');
             }
         }
     }
