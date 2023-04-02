@@ -33,4 +33,5 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/add/student', [StudentController::class, 'add_student'])->name('add_student');
+Route::get('/list/student', [StudentController::class, 'list_student'])->name('list_student');
 Route::post('/student/store', [StudentController::class, 'store'])->name('StudentSave');

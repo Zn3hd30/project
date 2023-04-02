@@ -42,7 +42,7 @@
                     <div class="mb-3">
                         <label for="Gender" class="form-label">Gender</label>
                         <select id="Gender" name="Gender" class="form-select form-select-sm mb-3" aria-label=".form-select-sm example">
-                            <option selected="Male">Male</option>
+                            <option value="Male" selected>Male</option>
                             <option value="Female">Female</option>
                         </select>
                     </div>

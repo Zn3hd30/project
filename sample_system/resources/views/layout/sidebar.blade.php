@@ -16,6 +16,7 @@
                 <div class="navbar-nav w-100">
                     <a href="index.html" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <a href="{{route('add_student')}}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Add Students</a>
+                    <a href="{{route('list_student')}}" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>List Students</a>
                     
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>

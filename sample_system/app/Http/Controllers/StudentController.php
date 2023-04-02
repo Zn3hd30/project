@@ -18,6 +18,11 @@ class StudentController extends Controller
         return view('add_student');
     }
 
+    public function list_student()
+    {
+        $Student = Student::all();
+        return view('list_student' ,compact('Student'));
+    }
 
     public function store(Request $request)
     {
