@@ -13,12 +13,25 @@ use App\Http\Controllers\StudentController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 
 
 Route::get('/student', [StudentController::class, 'show']);
-Route::post('/student/store', [StudentController::class, 'store'])->name('StudentSave');
+
 Route::get('/student/data', [StudentController::class, 'data']);
+use App\Http\Controllers\MyrController;
+Route::get('/linaza', [MyrController::class, 'hahe']);
+
+
+
+Route::get('/dashboard', function () {
+    return view('add_student');
+});
+
+
+
+Route::get('/add/student', [StudentController::class, 'add_student'])->name('add_student');
+Route::get('/list/student', [StudentController::class, 'list_student'])->name('list_student');
+Route::post('/student/store', [StudentController::class, 'store'])->name('StudentSave');

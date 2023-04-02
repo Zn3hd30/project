@@ -22,6 +22,8 @@ class Student extends Authenticatable
         'FirstName',
         'LastName',
         'MiddleName',
+        'ExtensionName',
+        'BirthDate',
         'Email',
         'Gender',
         'Mobile',
