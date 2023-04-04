@@ -14,7 +14,7 @@ use App\Http\Controllers\StudentController;
 |
 */
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 
@@ -27,11 +27,12 @@ Route::get('/linaza', [MyrController::class, 'hahe']);
 
 
 Route::get('/dashboard', function () {
-    return view('add_student');
-});
+    return view('dashboard');
+})->name('dashboard');
 
 
 
 Route::get('/add/student', [StudentController::class, 'add_student'])->name('add_student');
 Route::get('/list/student', [StudentController::class, 'list_student'])->name('list_student');
 Route::post('/student/store', [StudentController::class, 'store'])->name('StudentSave');
+Route::post('/student/delete', [StudentController::class, 'delete_student'])->name('StudentDelete');
