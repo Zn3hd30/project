@@ -7,11 +7,6 @@ use App\Models\Student;
 
 class StudentController extends Controller
 {
-    public function show()
-    {
-        return view('Student');
-    }
-
 
     public function add_student()
     {
@@ -104,10 +99,5 @@ class StudentController extends Controller
 
 
         
-    }
-
-    public function data(){
-        $data = Student::all();
-        return view('StudentData',compact('data'));
     }
 }
